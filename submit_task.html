@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="form-container" style="max-width: 600px; margin: 60px auto;">
+    
+    <div class="card" style="padding: 40px; border-top: 4px solid var(--accent);">
+        
+        <h2 style="text-align: center; margin-bottom: 10px; letter-spacing: -1px;">
+            📤 UPLOAD WORK
+        </h2>
+        <p style="text-align: center; color: var(--text-muted); font-size: 14px; margin-bottom: 30px;">
+            Submit your proof to claim your bounty.
+        </p>
+
+        <div style="background: rgba(34, 211, 238, 0.05); border: 1px solid rgba(34, 211, 238, 0.2); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+            <h4 style="color: var(--accent); margin-bottom: 10px; text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">
+                Current Mission
+            </h4>
+            <h3 style="color: white; margin-bottom: 15px;">{{ app.title }}</h3>
+            
+            <div style="color: var(--text-muted); font-size: 14px; line-height: 1.6; white-space: pre-wrap; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 6px;">{{ app.description }}</div>
+            
+            <div style="margin-top: 15px; font-weight: 700; color: var(--primary);">
+                Payout: ₹{{ app.payment }}
+            </div>
+        </div>
+
+        <form method="POST">
+            <div class="input-group">
+                <label style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px; display: block;">
+                    PROOF OF WORK LINK
+                </label>
+                <input name="work_link" 
+                       type="url" 
+                       placeholder="🔗 https://drive.google.com/..." 
+                       required 
+                       style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: white;">
+                <p style="color: #666; font-size: 11px; margin-top: 8px;">
+                    💡 Make sure your link permissions are set to "Anyone with the link can view."
+                </p>
+            </div>
+
+            <button class="btn" style="width: 100%; margin-top: 30px; padding: 15px; background: var(--accent); color: #000; font-weight: 800;">
+                CONFIRM SUBMISSION
+            </button>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

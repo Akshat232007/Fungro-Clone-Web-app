@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="form-container" style="max-width: 480px; margin: 60px auto;">
+    
+    <div class="card" style="padding: 40px; border-top: 4px solid var(--secondary);">
+        
+        <h2 style="text-align: center; margin-bottom: 30px; letter-spacing: -1px;">
+            INITIATE PROFILE ✨
+        </h2>
+
+        <form method="POST">
+            <div class="input-group" style="margin-bottom: 15px;">
+                <input name="name" 
+                       type="text" 
+                       placeholder="👤 Full Name" 
+                       required 
+                       style="width: 100%; padding: 14px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: white;">
+            </div>
+
+            <div class="input-group" style="margin-bottom: 15px;">
+                <input name="email" 
+                       type="email" 
+                       placeholder="📧 Email Address" 
+                       required 
+                       style="width: 100%; padding: 14px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: white;">
+            </div>
+
+            <div class="input-group" style="margin-bottom: 15px;">
+                <input name="password" 
+                       type="password" 
+                       placeholder="🔑 Password" 
+                       required 
+                       style="width: 100%; padding: 14px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: white;">
+            </div>
+
+            <div class="input-group" style="margin-bottom: 25px;">
+                <select name="role" 
+                        required 
+                        style="width: 100%; padding: 14px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: white; cursor: pointer;">
+                    <option value="" disabled selected>Choose your path...</option>
+                    <option value="teen">🎓 Teen (Earner)</option>
+                    <option value="business">🏢 Business (Client)</option>
+                </select>
+            </div>
+
+            <button class="btn" style="width: 100%; padding: 15px; font-size: 16px; background: var(--secondary); color: white;">
+                ESTABLISH LINK 🚀
+            </button>
+        </form>
+
+        <p style="text-align: center; margin-top: 25px; font-size: 14px; color: var(--text-muted);">
+            Already have a profile? 
+            <a href="/login" style="color: var(--secondary); font-weight: 700;">
+                Access System
+            </a>
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

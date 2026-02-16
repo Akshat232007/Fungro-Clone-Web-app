@@ -1,0 +1,177 @@
+/* ==========================================================================
+   CSS VARIABLES (Theming)
+   ========================================================================== */
+:root {
+    --bg-color: #050505;
+    --card-bg: #121212;
+    --primary: #00ff9d;
+    --secondary: #d946ef;
+    --accent: #22d3ee;
+    --text-main: #ffffff;
+    --text-muted: #a1a1aa;
+    --radius: 16px;
+}
+
+/* ==========================================================================
+   GLOBAL RESET & BASE STYLES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Outfit', sans-serif;
+    /* Cyberpunk Grid Background */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+h1, h2, h3, .brand, .btn {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.5px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+/* ==========================================================================
+   NAVIGATION
+   ========================================================================== */
+.navbar {
+    background: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brand span {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary);
+}
+
+/* ==========================================================================
+   LAYOUT CONTAINERS
+   ========================================================================== */
+.container {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+/* ==========================================================================
+   COMPONENTS: Cards, Buttons, Tables
+   ========================================================================== */
+.card {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: var(--radius);
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(0, 255, 157, 0.2);
+}
+
+.btn {
+    display: inline-block;
+    background: var(--primary);
+    color: #000;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #fff;
+    box-shadow: 0 0 15px var(--primary);
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px solid #333;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 18px;
+    text-align: left;
+    border-bottom: 1px solid #222;
+}
+
+th {
+    background: #1a1a1a;
+    color: var(--text-main);
+    font-size: 12px;
+}
+
+/* ==========================================================================
+   STATUS INDICATORS & BADGES
+   ========================================================================== */
+.badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.status-pending {
+    background: rgba(253, 224, 71, 0.2);
+    color: #fde047;
+    border: 1px solid #fde047;
+}
+
+.status-submitted {
+    background: rgba(34, 211, 238, 0.2);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+.status-approved {
+    background: rgba(0, 255, 157, 0.2);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+.hero-title {
+    font-size: 64px;
+    font-weight: 700;
+    background: linear-gradient(to right, #fff, #a1a1aa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+    <h2>👮 MISSION CONTROL</h2>
+    <span class="badge" style="background: var(--secondary); color: black; box-shadow: 0 0 15px var(--secondary);">
+        SUPER ADMIN MODE
+    </span>
+</div>
+
+<div class="grid" style="margin-bottom: 50px;">
+    <div class="card" style="text-align: center; border-top: 4px solid var(--primary);">
+        <h3 style="color: var(--primary); font-size: 42px;">{{ users|length }}</h3>
+        <p style="color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">
+            Total Users
+        </p>
+    </div>
+
+    <div class="card" style="text-align: center; border-top: 4px solid var(--accent);">
+        <h3 style="color: var(--accent); font-size: 42px;">{{ tasks|length }}</h3>
+        <p style="color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">
+            Active Missions
+        </p>
+    </div>
+
+    <div class="card" style="text-align: center; border-top: 4px solid var(--secondary);">
+        <h3 style="color: var(--secondary); font-size: 42px;">{{ applications|length }}</h3>
+        <p style="color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">
+            Applications
+        </p>
+    </div>
+</div>
+
+<div class="section-container" style="margin-bottom: 40px;">
+    <h3 style="margin-bottom: 20px;">👥 USER DATABASE</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in users %}
+            <tr>
+                <td>#{{ u.id }}</td>
+                <td style="color: white; font-weight: bold;">{{ u.name }}</td>
+                <td>{{ u.email }}</td>
+                <td>
+                    <span class="badge" style="background: #333; color: var(--text-muted);">
+                        {{ u.role }}
+                    </span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="section-container">
+    <h3 style="margin-top: 40px; margin-bottom: 20px;">📋 MISSION LOGS</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Business</th>
+                <th>Payment</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in tasks %}
+            <tr>
+                <td>#{{ t.id }}</td>
+                <td style="color: white;">{{ t.title }}</td>
+                <td>{{ t.business_name }}</td>
+                <td style="color: var(--primary); font-weight: bold;">
+                    ₹{{ t.payment }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

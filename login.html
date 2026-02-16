@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="form-container" style="max-width: 450px; margin: 80px auto;">
+    
+    <div class="card" style="padding: 40px; border-top: 4px solid var(--primary);">
+        
+        <h2 style="text-align: center; margin-bottom: 30px; letter-spacing: -1px;">
+            WELCOME BACK 👋
+        </h2>
+
+        <form method="POST">
+            <div class="input-group" style="margin-bottom: 20px;">
+                <input name="email" 
+                       type="email" 
+                       placeholder="📧 Email Address" 
+                       required 
+                       style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: white;">
+            </div>
+
+            <div class="input-group" style="margin-bottom: 25px;">
+                <input name="password" 
+                       type="password" 
+                       placeholder="🔒 Password" 
+                       required 
+                       style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: white;">
+            </div>
+
+            <button class="btn" style="width: 100%; padding: 15px; font-size: 16px; letter-spacing: 1px;">
+                LOGIN SYSTEM ⚡
+            </button>
+        </form>
+
+        <p style="text-align: center; margin-top: 25px; font-size: 14px; color: var(--text-muted);">
+            No account? 
+            <a href="/register" style="color: var(--primary); font-weight: 700;">
+                Create one
+            </a>
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

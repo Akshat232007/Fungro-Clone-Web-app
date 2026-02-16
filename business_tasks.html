@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+    <div>
+        <h2 style="font-size: 28px;">📂 ACTIVE MISSIONS</h2>
+        <p style="color: var(--text-muted); font-size: 14px;">Manage your currently live bounties.</p>
+    </div>
+    <a href="/business/post" class="btn btn-small" style="padding: 10px 20px;">
+        ➕ New Mission
+    </a>
+</div>
+
+{% if tasks %}
+    <div class="grid">
+        {% for t in tasks %}
+        <div class="card" style="border-top: 4px solid var(--accent); display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <h3 style="color: white; margin-bottom: 12px;">{{ t.title }}</h3>
+                <p style="color: var(--text-muted); font-size: 14px; line-height: 1.5; margin-bottom: 15px;">
+                    {{ t.description[:100] }}{% if t.description|length > 100 %}...{% endif %}
+                </p>
+                
+                <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                    <div>
+                        <span style="display: block; font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Reward</span>
+                        <span style="font-weight: 800; color: var(--primary); font-size: 18px;">₹{{ t.payment }}</span>
+                    </div>
+                    <div>
+                        <span style="display: block; font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Deadline</span>
+                        <span style="font-weight: 600; color: white; font-size: 14px;">{{ t.deadline }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid #222; padding-top: 15px; text-align: right;">
+                <a href="/business/delete/{{ t.id }}" 
+                   class="btn btn-small" 
+                   style="background: transparent; border: 1px solid #ef4444; color: #ef4444; font-size: 11px; transition: 0.2s;" 
+                   onmouseover="this.style.background='#ef4444'; this.style.color='white';"
+                   onmouseout="this.style.background='transparent'; this.style.color='#ef4444';"
+                   onclick="return confirm('Are you sure you want to terminate this mission?');">
+                   🗑️ Delete Mission
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="alert" style="background: #111; padding: 40px; border-radius: 12px; text-align: center; border: 1px dashed #333; color: var(--text-muted);">
+        You haven't posted any missions yet. 
+        <br><br>
+        <a href="/business/post" style="color: var(--primary); text-decoration: underline;">Launch your first mission now.</a>
+    </div>
+{% endif %}
+
+{% endblock %}

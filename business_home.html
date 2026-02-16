@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;">
+    <div>
+        <h2 style="font-size: 32px;">🏢 MISSION CONTROL</h2>
+        <p style="color: var(--text-muted);">Manage your recruits and review mission submissions.</p>
+    </div>
+    
+    <div style="display: flex; gap: 15px;">
+        <a href="/business/tasks" class="btn btn-small" 
+           style="background: var(--card-bg); border: 1px solid var(--accent); color: var(--accent); padding: 10px 20px;">
+            📂 View Posted Tasks
+        </a>
+        <a href="/business/post" class="btn btn-small" 
+           style="padding: 10px 20px; box-shadow: 0 0 15px rgba(0, 255, 157, 0.3);">
+            ➕ New Mission
+        </a>
+    </div>
+</div>
+
+<section>
+    <h3 style="color: var(--primary); margin-bottom: 25px; display: flex; align-items: center; gap: 10px;">
+        INCOMING SUBMISSIONS
+    </h3>
+
+    {% if apps %}
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mission</th>
+                        <th>Recruit</th>
+                        <th>Proof of Work</th>
+                        <th>Current Status</th>
+                        <th>Management</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a in apps %}
+                    <tr>
+                        <td style="color: white; font-weight: 600;">{{ a.title }}</td>
+                        <td style="color: var(--text-muted);">{{ a.teen }}</td>
+                        <td>
+                            {% if a.work_link %}
+                                <a href="{{ a.work_link }}" target="_blank" 
+                                   style="color: var(--accent); text-decoration: underline; font-size: 14px;">
+                                   View Work 🔗
+                                </a>
+                            {% else %}
+                                <span style="color: #444;">No link yet</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <span class="badge status-{{ a.status|lower }}">
+                                {{ a.status }}
+                            </span>
+                        </td>
+                        <td>
+                            {% if a.status == "Submitted" %}
+                                <a href="/business/approve/{{ a.id }}" class="btn btn-small" 
+                                   style="background: var(--primary); color: #000; font-size: 11px; padding: 6px 12px;">
+                                    APPROVE & PAY
+                                </a>
+                            {% elif a.status == "Approved" %}
+                                <span style="color: var(--primary); font-size: 12px; font-weight: 700;">✅ COMPLETED</span>
+                            {% else %}
+                                <span style="color: var(--text-muted); font-size: 12px;">Awaiting Submission</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert" style="background: #111; padding: 40px; border-radius: 12px; text-align: center; border: 1px dashed #333; color: var(--text-muted);">
+            No mission submissions to review yet. Grab a drink! 🍹
+        </div>
+    {% endif %}
+</section>
+
+{% endblock %}

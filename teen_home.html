@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;">
+    <div>
+        <h2 style="font-size: 32px;">👋 YO, {{ session.name }}</h2>
+        <p style="color: var(--text-muted);">Secure the bag today. Your grind starts here.</p>
+    </div>
+    
+    <div class="card" style="padding: 15px 30px; border: 2px solid var(--primary); background: rgba(0, 255, 157, 0.05); min-width: 200px;">
+        <span style="font-size: 11px; color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">
+            Wallet Balance
+        </span>
+        <div style="font-size: 36px; font-weight: 800; color: white; line-height: 1;">
+            ₹{{ earnings }}
+        </div>
+    </div>
+</div>
+
+<section style="margin-bottom: 50px;">
+    <h3 style="margin-bottom: 25px; color: var(--accent); display: flex; align-items: center; gap: 10px;">
+        🔥 AVAILABLE MISSIONS
+    </h3>
+
+    {% if tasks %}
+        <div class="grid">
+            {% for t in tasks %}
+            <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <h3 style="color: white; margin-bottom: 10px;">{{ t.title }}</h3>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px; line-height: 1.5;">
+                        {{ t.description[:80] }}...
+                    </p>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #222; padding-top: 15px;">
+                    <div>
+                        <span style="display: block; font-size: 10px; color: var(--text-muted); text-transform: uppercase;">Reward</span>
+                        <span style="font-weight: 800; color: var(--primary); font-size: 18px;">₹{{ t.payment }}</span>
+                    </div>
+                    <a href="/teen/apply/{{ t.id }}" class="btn" style="padding: 8px 16px; font-size: 12px;">
+                        ACCEPT MISSION
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert" style="background: #111; padding: 30px; border-radius: 12px; text-align: center; border: 1px dashed #333; color: var(--text-muted);">
+            No new missions available right now. Check back soon! 🧊
+        </div>
+    {% endif %}
+</section>
+
+<section>
+    <h3 style="margin-bottom: 25px; color: var(--secondary);">📋 YOUR GRIND LOG</h3>
+    
+    {% if apps %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Mission</th>
+                    <th>Reward</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in apps %}
+                <tr>
+                    <td style="color: white; font-weight: 600;">{{ a.title }}</td>
+                    <td style="color: var(--primary);">₹{{ a.payment }}</td>
+                    <td>
+                        <span class="badge status-{{ a.status.lower() }}">
+                            {{ a.status }}
+                        </span>
+                    </td>
+                    <td>
+                        {% if a.status == 'Pending' %}
+                            <a href="/teen/submit/{{ a.id }}" class="btn" style="padding: 5px 15px; font-size: 11px; background: var(--accent);">SUBMIT WORK</a>
+                        {% else %}
+                            <span style="color: var(--text-muted); font-size: 12px;">Locked</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p style="color: var(--text-muted); font-size: 14px;">You haven't accepted any missions yet. Time to get moving!</p>
+    {% endif %}
+</section>
+
+{% endblock %}
