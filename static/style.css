@@ -167,15 +167,4 @@ th {
 }
 
 
-.badge.status-pending { 
-    background: #facc15;
-    color: #000; 
-}
-.badge.status-submitted { 
-    background: var(--accent); 
-    color: #000; 
-}
-.badge.status-approved { 
-    background: var(--primary); 
-    color: #000;
- }
+
