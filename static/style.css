@@ -1,6 +1,4 @@
-/* ==========================================================================
-   CSS VARIABLES (Theming)
-   ========================================================================== */
+
 :root {
     --bg-color: #050505;
     --card-bg: #121212;
@@ -12,9 +10,7 @@
     --radius: 16px;
 }
 
-/* ==========================================================================
-   GLOBAL RESET & BASE STYLES
-   ========================================================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -25,7 +21,6 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     font-family: 'Outfit', sans-serif;
-    /* Cyberpunk Grid Background */
     background-image: 
         linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
@@ -43,9 +38,11 @@ a {
     transition: 0.3s;
 }
 
-/* ==========================================================================
-   NAVIGATION
-   ========================================================================== */
+/* 
+==========================================================================
+NAVIGATION
+==========================================================================
+ */
 .navbar {
     background: rgba(18, 18, 18, 0.8);
     backdrop-filter: blur(10px);
@@ -79,9 +76,7 @@ a {
     gap: 25px;
 }
 
-/* ==========================================================================
-   COMPONENTS: Cards, Buttons, Tables
-   ========================================================================== */
+
 .card {
     background: var(--card-bg);
     padding: 25px;
@@ -135,9 +130,7 @@ th {
     font-size: 12px;
 }
 
-/* ==========================================================================
-   STATUS INDICATORS & BADGES
-   ========================================================================== */
+
 .badge {
     padding: 5px 12px;
     border-radius: 20px;
@@ -164,9 +157,6 @@ th {
     border: 1px solid var(--primary);
 }
 
-/* ==========================================================================
-   HERO SECTION
-   ========================================================================== */
 .hero-title {
     font-size: 64px;
     font-weight: 700;
@@ -175,3 +165,17 @@ th {
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+
+.badge.status-pending { 
+    background: #facc15;
+    color: #000; 
+}
+.badge.status-submitted { 
+    background: var(--accent); 
+    color: #000; 
+}
+.badge.status-approved { 
+    background: var(--primary); 
+    color: #000;
+ }
